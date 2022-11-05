@@ -563,10 +563,58 @@ let data = {
 //on change Input
     function onInputChange(){
     let inputValue = document.getElementById("list-input").value;
-    sessionStorage.setItem("inputValue",inputValue);
-    let index = data.resume.findIndex(i=> i.basics.name == inputValue)
-	console.log("index",index);
+	let results=[];
+	let index = data.resume.findIndex(i=> i.basics.AppliedFor == inputValue)
+	if(index == -1  ){
+		let prev = document.getElementById("prev").style;
+		let next = document.getElementById("next").style;
+		let notFound = document.getElementsByClassName("not-found")[0]
+		
+		if(inputValue !== "")
+		{
+		prev.display="none";
+		next.display="none";
+		
+		notFound.style.display="flex";
+		notFound.style.justifyContent="center";
+		}
+		else{
+		
+		prev.display="block";
+		next.display="block";
+		
+		notFound.style.display="none";
+		}
+	}
+	else{
+		let filteredArray = data.resume.filter(i=>i.basics.AppliedFor == inputValue);
+		console.log(filteredArray)
+		let prev = document.getElementById("prev")
+		let next = document.getElementById("next")
+		let container = document.getElementById("container");
+		if(filteredArray.length > 1){
+			prev.disabled = true;
+			prev.style.backgroundColor="#f9f9f9";
+		}	
+		else{
+			container.style.display="block"
+			prev.disabled = true;
+			prev.style.backgroundColor="#f9f9f9";
+			prev.style.color="black";
+			prev.style.cursor="none";
+			next.disabled = true;
+			next.style.backgroundColor="#f9f9f9";
+			next.style.color="black";
+			next.style.cursor="none";
+			let name = document.getElementById("name");
+				name.innerHTML= filteredArray[0].basics.name;
+			let appliedFor = document.getElementById("appliedText");
+				appliedFor.innerHTML = filteredArray[0].basics.AppliedFor;
+		}
+	}
+
+	
     }
-let resume=data.resume;
+
  
 

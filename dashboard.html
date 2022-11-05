@@ -3,6 +3,7 @@
         <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
         <title>Resume List</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="dashboard.css"></link>
     </head>
     <body>
@@ -10,14 +11,35 @@
             <h2>Resume List </h2>
             <div id="containerDiv">
                 <div class="input-text">
-                    <input type="search" id="list-input" onchange="onInputChange()" >
+                    <div class="form-inline">
+                        <input type="text" id="list-input" placeholder="Search.." name="search">
+                        <button type="submit" id="search" onClick="onInputChange()"><i class="fa fa-search"></i></button>
+                    </div>
                     <div class="button">
                         <button id="prev" onClick="prevDetails()">PREV</button>
                         <button id="next" onClick="nextDetails()">NEXT</button>
                     </div>
                 </div>
+                    <div class="not-found" style="display: none;">
+                        <div>
+                            <img src="./Capture.PNG" alt="not-found">
+                            <div class="not-found-text">
+                              Results not found
+                            </div>
+                        </div>
+                    </div>
+                    <div id="container" style="display: none;">
+                        <header>
+                            <div id="name"></div>
+                            <div id="applied" >
+                                <span id="appliedKey">Applied For : </span>
+                                <span id="appliedText"></span>
+                            </div>
+                        </header>
+                    </div>
+                
             </div>
         </div>
-        <script src="dashboard.js"></script>
+        <script defer src="dashboard.js"></script>
     </body>
 </html>
