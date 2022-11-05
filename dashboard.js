@@ -610,6 +610,22 @@ let data = {
 				name.innerHTML= filteredArray[0].basics.name;
 			let appliedFor = document.getElementById("appliedText");
 				appliedFor.innerHTML = filteredArray[0].basics.AppliedFor;
+			let phone = document.getElementById("phone");
+			let email = document.getElementById("email");
+			let url = document.getElementById("links")
+			phone.innerHTML =  filteredArray[0].basics.phone;
+			email.innerHTML = filteredArray[0].basics.email;
+			url.href =filteredArray[0].basics.profiles.url;
+			let str="";
+			for(var i=0;i<filteredArray[0].skills.keywords.length;i++){
+				str+='<div>'+filteredArray[0].skills.keywords[i]+'</div>';
+			}
+			let hobbies="";
+			for(var i=0;i<filteredArray[0].interests.hobbies.length;i++){
+				hobbies+='<div>'+filteredArray[0].interests.hobbies[i]+'</div>';
+			}
+			document.getElementsByClassName("technical-skills")[0].querySelectorAll("div")[1].innerHTML =str;
+			document.getElementsByClassName("hobbies")[0].querySelectorAll("div")[1].innerHTML =hobbies;
 		}
 	}
 

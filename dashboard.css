@@ -62,3 +62,22 @@ input{
     font-size: 12px;
 
 }
+#body{
+    display:flex;
+}
+.personal-info{
+    margin: 10px;
+    width: 150px;
+}
+#phone{
+    display: flex;
+    flex-direction: row-reverse;
+}
+#email{
+    display: flex;
+    flex-direction: row-reverse;
+}
+#links{
+   display: flex;
+    flex-direction: row-reverse;
+}
