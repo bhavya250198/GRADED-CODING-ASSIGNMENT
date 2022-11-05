@@ -65,8 +65,11 @@ input{
 #body{
     display:flex;
 }
+.work-body{
+    padding: 10px;
+}
 .personal-info{
-    margin: 10px;
+    
     width: 150px;
 }
 #phone{
@@ -80,4 +83,9 @@ input{
 #links{
    display: flex;
     flex-direction: row-reverse;
+}
+#personalDetails{
+    background-color: #ffb6c1;
+       width: 200px;
+    margin: 10px;
 }
