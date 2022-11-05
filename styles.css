@@ -1,0 +1,46 @@
+h1{
+    text-align: center;
+}
+main{
+    position:relative;
+}
+
+#login-form{
+    max-width: 450px;
+    min-width: 600px;
+    width: 100%;
+    margin: 10px auto;
+    border: 1px solid black;
+    padding: 10px;
+    font-family: sans-serif;
+}
+label{
+    font-weight:bold;
+}
+input{
+    max-width: 300px;
+    min-width: 400px;
+    width: 100%;
+}
+button{
+    max-width: 50px;
+    min-width: 100px;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+.item{
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    margin:10px;
+}
+#notification{
+    width: 150px;
+    display:block;
+    position: absolute;
+    right: 0px;
+    top: 1px;
+    padding: 10px;
+    border:1px solid black;
+}

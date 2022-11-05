@@ -33,11 +33,34 @@ loginButton.addEventListener("click",(e)=>
             window.location.href="dashboard.html"
         }
         else{
-            console.log("wrong password")
+          let notificationStyle= document.getElementsByClassName("notification")[0].style;
+          notificationStyle.backgroundColor="red";
+          notificationStyle.color="white";
+          notificationStyle.width="200px";
+          notificationStyle.position="absolute";
+          notificationStyle.right="10px";
+          notificationStyle.padding="15px";
+          notificationStyle.display="block";
+           document.getElementsByClassName("notification")[0].innerHTML="Wrong Passoword";
+           setTimeout(function(){
+            notificationStyle.display="none";
+           },3000)
+
         }
      }
      else{
-        console.log("credentials does not exist")
+      let notificationStyle= document.getElementsByClassName("notification")[0].style;
+      notificationStyle.backgroundColor="red";
+      notificationStyle.color="white";
+      notificationStyle.width="200px";
+      notificationStyle.position="absolute";
+      notificationStyle.right="10px";
+      notificationStyle.padding="15px";
+      notificationStyle.display="block";
+       document.getElementsByClassName("notification")[0].innerHTML="Invalid Credentials";
+       setTimeout(function(){
+        notificationStyle.display="none";
+       },3000)
      }
     
    
