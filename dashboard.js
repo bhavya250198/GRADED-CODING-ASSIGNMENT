@@ -626,6 +626,31 @@ let data = {
 			}
 			document.getElementsByClassName("technical-skills")[0].querySelectorAll("div")[1].innerHTML =str;
 			document.getElementsByClassName("hobbies")[0].querySelectorAll("div")[1].innerHTML =hobbies;
+			document.getElementById("companyName").innerHTML= filteredArray[0].work["Company Name"];
+			document.getElementById("position").innerHTML= filteredArray[0].work.Position;
+			document.getElementById("startDate").innerHTML= filteredArray[0].work["Start Date"];
+			document.getElementById("endDate").innerHTML= filteredArray[0].work["End Date"];
+			document.getElementById("summary").innerHTML= filteredArray[0].work.Summary;
+			document.getElementById("internName").innerHTML= filteredArray[0].Internship["Company Name"];
+			document.getElementById("internPosition").innerHTML= filteredArray[0].Internship.Position;
+			document.getElementById("internStartDate").innerHTML= filteredArray[0].Internship["Start Date"];
+			document.getElementById("internEndDate").innerHTML= filteredArray[0].Internship["End Date"];
+			document.getElementById("internSummary").innerHTML= filteredArray[0].Internship.Summary;
+			document.getElementsByClassName("projectParameters")[0].innerHTML= filteredArray[0].projects.name;
+			document.getElementsByClassName("projectValues")[0].innerHTML= filteredArray[0].projects.description;
+			let str2 = "<ul>";
+			for(var i=0;i<filteredArray[0].achievements.Summary.length;i++){
+				str2 += "<li>"+filteredArray[0].achievements.Summary[i]+"</li>";
+			}
+			str2 +="</ul>";
+		document.getElementById("achievementDetails").innerHTML=str2;
+
+		let education = "<ul>"
+		     education += "<li> UG : "+filteredArray[0].education.UG.institute+","+filteredArray[0].education.UG.course+","+filteredArray[0].education.UG.cgpa+","+filteredArray[0].education.UG["Start Date"]+","+filteredArray[0].education.UG["End Date"]+"</li>";
+			 education += "<li>Senior Secondary : "+filteredArray[0].education["Senior Secondary"].institute+","+filteredArray[0].education["Senior Secondary"].cgpa+"</li>";
+			 education += "<li> High School:"+filteredArray[0].education["High School"].institute+","+filteredArray[0].education["High School"].cgpa+"</li>";
+		education +="</ul>";
+		document.getElementById("educationDetails").innerHTML=education;
 		}
 	}
 

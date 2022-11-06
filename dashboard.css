@@ -68,9 +68,14 @@ input{
 .work-body{
     padding: 10px;
 }
-.personal-info{
-    
-    width: 150px;
+.parameters{
+    font-weight: bold;
+}
+.projectParameters{
+    font-weight:bold;
+}
+ul{
+    padding: 10px;
 }
 #phone{
     display: flex;
