@@ -595,8 +595,15 @@ let data = {
 		if(filteredArray.length > 1){
 			prev.disabled = true;
 			prev.style.backgroundColor="#f9f9f9";
+			next.disabled=false;
+			next.style.backgroundColor="#108ee9";
+			next.style.cursor = "pointer";
+			sessionStorage.setItem("filteredArray", JSON.stringify([...filteredArray]));
+			sessionStorage.setItem("index",0);
+			displayContents(filteredArray,0);
 		}	
 		else{
+
 			container.style.display="block"
 			prev.disabled = true;
 			prev.style.backgroundColor="#f9f9f9";
@@ -606,56 +613,98 @@ let data = {
 			next.style.backgroundColor="#f9f9f9";
 			next.style.color="black";
 			next.style.cursor="none";
-			let name = document.getElementById("name");
-				name.innerHTML= filteredArray[0].basics.name;
-			let appliedFor = document.getElementById("appliedText");
-				appliedFor.innerHTML = filteredArray[0].basics.AppliedFor;
-			let phone = document.getElementById("phone");
-			let email = document.getElementById("email");
-			let url = document.getElementById("links")
-			phone.innerHTML =  filteredArray[0].basics.phone;
-			email.innerHTML = filteredArray[0].basics.email;
-			url.href =filteredArray[0].basics.profiles.url;
-			let str="";
-			for(var i=0;i<filteredArray[0].skills.keywords.length;i++){
-				str+='<div style="display:flex;flex-direction:row-reverse;">'+filteredArray[0].skills.keywords[i]+'</div>';
-			}
-			let hobbies="";
-			for(var i=0;i<filteredArray[0].interests.hobbies.length;i++){
-				hobbies+='<div style="display:flex;flex-direction:row-reverse;">'+filteredArray[0].interests.hobbies[i]+'</div>';
-			}
-			document.getElementsByClassName("technical-skills")[0].querySelectorAll("div")[1].innerHTML =str;
-			document.getElementsByClassName("hobbies")[0].querySelectorAll("div")[1].innerHTML =hobbies;
-			document.getElementById("companyName").innerHTML= filteredArray[0].work["Company Name"];
-			document.getElementById("position").innerHTML= filteredArray[0].work.Position;
-			document.getElementById("startDate").innerHTML= filteredArray[0].work["Start Date"];
-			document.getElementById("endDate").innerHTML= filteredArray[0].work["End Date"];
-			document.getElementById("summary").innerHTML= filteredArray[0].work.Summary;
-			document.getElementById("internName").innerHTML= filteredArray[0].Internship["Company Name"];
-			document.getElementById("internPosition").innerHTML= filteredArray[0].Internship.Position;
-			document.getElementById("internStartDate").innerHTML= filteredArray[0].Internship["Start Date"];
-			document.getElementById("internEndDate").innerHTML= filteredArray[0].Internship["End Date"];
-			document.getElementById("internSummary").innerHTML= filteredArray[0].Internship.Summary;
-			document.getElementsByClassName("projectParameters")[0].innerHTML= filteredArray[0].projects.name;
-			document.getElementsByClassName("projectValues")[0].innerHTML= filteredArray[0].projects.description;
-			let str2 = "<ul>";
-			for(var i=0;i<filteredArray[0].achievements.Summary.length;i++){
-				str2 += "<li>"+filteredArray[0].achievements.Summary[i]+"</li>";
-			}
-			str2 +="</ul>";
-		document.getElementById("achievementDetails").innerHTML=str2;
-
-		let education = "<ul>"
-		     education += "<li> UG : "+filteredArray[0].education.UG.institute+","+filteredArray[0].education.UG.course+","+filteredArray[0].education.UG.cgpa+","+filteredArray[0].education.UG["Start Date"]+","+filteredArray[0].education.UG["End Date"]+"</li>";
-			 education += "<li>Senior Secondary : "+filteredArray[0].education["Senior Secondary"].institute+","+filteredArray[0].education["Senior Secondary"].cgpa+"</li>";
-			 education += "<li> High School:"+filteredArray[0].education["High School"].institute+","+filteredArray[0].education["High School"].cgpa+"</li>";
-		education +="</ul>";
-		document.getElementById("educationDetails").innerHTML=education;
+			displayContents(filteredArray,0)
+			
 		}
 	}
 
 	
     }
+	function displayContents(filteredArray,index){
+		debugger;
+		let name = document.getElementById("name");
+				name.innerHTML= filteredArray[index].basics.name;
+			let appliedFor = document.getElementById("appliedText");
+				appliedFor.innerHTML = filteredArray[index].basics.AppliedFor;
+			let phone = document.getElementById("phone");
+			let email = document.getElementById("email");
+			let url = document.getElementById("links")
+			phone.innerHTML =  filteredArray[index].basics.phone;
+			email.innerHTML = filteredArray[index].basics.email;
+			url.href =filteredArray[index].basics.profiles.url;
+			let str="";
+			for(var i=0;i<filteredArray[index].skills.keywords.length;i++){
+				str+='<div style="display:flex;flex-direction:row-reverse;">'+filteredArray[index].skills.keywords[i]+'</div>';
+			}
+			let hobbies="";
+			for(var i=0;i<filteredArray[index].interests.hobbies.length;i++){
+				hobbies+='<div style="display:flex;flex-direction:row-reverse;">'+filteredArray[index].interests.hobbies[i]+'</div>';
+			}
+			document.getElementsByClassName("technical-skills")[0].querySelectorAll("div")[1].innerHTML =str;
+			document.getElementsByClassName("hobbies")[0].querySelectorAll("div")[1].innerHTML =hobbies;
+			document.getElementById("companyName").innerHTML= filteredArray[index].work["Company Name"];
+			document.getElementById("position").innerHTML= filteredArray[index].work.Position;
+			document.getElementById("startDate").innerHTML= filteredArray[index].work["Start Date"];
+			document.getElementById("endDate").innerHTML= filteredArray[index].work["End Date"];
+			document.getElementById("summary").innerHTML= filteredArray[index].work.Summary;
+			document.getElementById("internName").innerHTML= filteredArray[index].Internship["Company Name"];
+			document.getElementById("internPosition").innerHTML= filteredArray[index].Internship.Position;
+			document.getElementById("internStartDate").innerHTML= filteredArray[index].Internship["Start Date"];
+			document.getElementById("internEndDate").innerHTML= filteredArray[index].Internship["End Date"];
+			document.getElementById("internSummary").innerHTML= filteredArray[index].Internship.Summary;
+			document.getElementsByClassName("projectParameters")[0].innerHTML= filteredArray[index].projects.name;
+			document.getElementsByClassName("projectValues")[0].innerHTML= filteredArray[index].projects.description;
+			let str2 = "<ul>";
+			for(var i=0;i<filteredArray[index].achievements.Summary.length;i++){
+				str2 += "<li>"+filteredArray[index].achievements.Summary[i]+"</li>";
+			}
+			str2 +="</ul>";
+		document.getElementById("achievementDetails").innerHTML=str2;
 
- 
+		let education = "<ul>"
+		     education += "<li> UG : "+filteredArray[index].education.UG.institute+","+filteredArray[index].education.UG.course+","+filteredArray[index].education.UG.cgpa+","+filteredArray[index].education.UG["Start Date"]+","+filteredArray[index].education.UG["End Date"]+"</li>";
+			 education += "<li>Senior Secondary : "+filteredArray[index].education["Senior Secondary"].institute+","+filteredArray[index].education["Senior Secondary"].cgpa+"</li>";
+			 education += "<li> High School:"+filteredArray[index].education["High School"].institute+","+filteredArray[index].education["High School"].cgpa+"</li>";
+		education +="</ul>";
+		document.getElementById("educationDetails").innerHTML=education;
+
+	}
+	function prevDetails(){
+		let filteredArray=JSON.parse(sessionStorage.getItem("filteredArray"));
+		let length = filteredArray.length-1;
+		let index = parseInt(sessionStorage.getItem("index"));
+		
+		console.log("index",index);
+		if(index == 0 || index <= length){
+			debugger;
+			prev.disabled = index == 1 ? true:false;
+			prev.style.backgroundColor= index == 1 ? "#f9f9f9":"#108ee9";
+			prev.style.cursor="pointer";
+			next.disabled=false;
+
+			next.style.backgroundColor="#108ee9";
+			next.style.cursor = "pointer";
+			sessionStorage.setItem("index",index-1)
+			displayContents(filteredArray,(index-1))
+			
+		}
+	}
+	function nextDetails(){
+		let filteredArray=JSON.parse(sessionStorage.getItem("filteredArray"));
+		let length = filteredArray.length-1;
+		let index = parseInt(sessionStorage.getItem("index"));
+		
+		console.log("index",index);
+		if(index >= 0 || index < length){
+			prev.disabled = false;
+			prev.style.backgroundColor= "#108ee9";
+			prev.style.cursor="pointer";
+			next.disabled=false;
+			next.style.backgroundColor=index == length-1 ? "#f9f9f9":"#108ee9";
+			next.style.cursor = "pointer";
+			sessionStorage.setItem("index",index+1)
+			displayContents(filteredArray,(index+1))
+			
+		}
+	}
 
