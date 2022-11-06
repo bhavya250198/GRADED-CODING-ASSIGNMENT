@@ -593,6 +593,7 @@ let data = {
 		let next = document.getElementById("next")
 		let container = document.getElementById("container");
 		if(filteredArray.length > 1){
+			container.style.display="block"
 			prev.disabled = true;
 			prev.style.backgroundColor="#f9f9f9";
 			next.disabled=false;
@@ -621,7 +622,7 @@ let data = {
 	
     }
 	function displayContents(filteredArray,index){
-		debugger;
+	
 		let name = document.getElementById("name");
 				name.innerHTML= filteredArray[index].basics.name;
 			let appliedFor = document.getElementById("appliedText");
