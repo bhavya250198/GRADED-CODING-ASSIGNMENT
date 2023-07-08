@@ -560,6 +560,41 @@ let data = {
 	]		 
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+	onRender(data.resume,0)
+  });
+  
+  function onRender(filteredArray){
+	let prev = document.getElementById("prev")
+		let next = document.getElementById("next")
+		let container = document.getElementById("container");
+		if(filteredArray.length > 1){
+			container.style.display="block"
+			prev.disabled = true;
+			prev.style.backgroundColor="#f9f9f9";
+			next.disabled=false;
+			next.style.backgroundColor="#108ee9";
+			next.style.cursor = "pointer";
+			sessionStorage.setItem("filteredArray", JSON.stringify([...filteredArray]));
+			sessionStorage.setItem("index",0);
+			displayContents(filteredArray,0);
+		}	
+		else{
+
+			container.style.display="block"
+			prev.disabled = true;
+			prev.style.backgroundColor="#f9f9f9";
+			prev.style.color="black";
+			prev.style.cursor="none";
+			next.disabled = true;
+			next.style.backgroundColor="#f9f9f9";
+			next.style.color="black";
+			next.style.cursor="none";
+			displayContents(filteredArray,0)
+			
+		}
+  }
 //on change Input
     function onInputChange(){
     let inputValue = document.getElementById("list-input").value;
@@ -624,6 +659,7 @@ let data = {
 	function displayContents(filteredArray,index){
 	
 		let name = document.getElementById("name");
+		
 				name.innerHTML= filteredArray[index].basics.name;
 			let appliedFor = document.getElementById("appliedText");
 				appliedFor.innerHTML = filteredArray[index].basics.AppliedFor;
